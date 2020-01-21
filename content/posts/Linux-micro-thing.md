@@ -71,7 +71,8 @@ apt-get install -y nodejs
 node-gyp出现错误  
 
 ``` shell
-sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+sudo rm -rf $(xcode-select -print-path)
+xcode-select --install
 ```
 
 macOS相关
