@@ -75,6 +75,12 @@ sudo rm -rf $(xcode-select -print-path)
 xcode-select --install
 ```
 
+修改时区  
+
+``` shell
+timedatectl set-timezone Asia/Shanghai
+```
+
 macOS相关
 
 ``` shell
