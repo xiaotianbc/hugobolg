@@ -1,6 +1,6 @@
 #!/bin/sh
 USER=root
-HOST=78997899.xyz             
+HOST=78997899.xyz
 DIR=/home/wwwroot/3DCEList/   # the directory where your web site files should go
 
 hugo && rsync -avz --delete public/ ${USER}@${HOST}:${DIR}

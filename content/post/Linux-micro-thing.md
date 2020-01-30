@@ -50,8 +50,15 @@ rm -rf ./besttrace*
 zsh
 
 ``` shell
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-ZSH_THEME="agnoster"
+# .zshrc
+ZSH_THEME=""
+fpath+=("$HOME/.zsh/pure")
+autoload -U promptinit; promptinit
+prompt pure
+
 ```
 
 ssh心跳
