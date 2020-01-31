@@ -37,9 +37,17 @@ vim /etc/hostname
 
 ## 用 Cloudflare 反代实现外网访问
 
-由于该 vps 只提供了 5 个固定端口的 ipv4 以及一个 ipv6，为了实现宝贵的单口复用，一般可以通过 nginx 反代实现端口复用：下面是我的 nginx 配置命令：
+由于该 vps 只提供了 5 个固定端口的 ipv4 以及一个 ipv6，为了实现端口的单口复用，一般可以通过 nginx 反代实现端口复用：下面是我的 nginx 配置命令：
 
 ```shell
+cd xxx
+
+wget https://nginx.org/download/nginx-1.17.8.tar.gz && tar zxf nginx-1.17.8.tar.gz
+wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1d.tar.gz && tar zxf OpenSSL_1_1_1d.tar.gz
+git clone https://github.com/google/ngx_brotli.git && cd ngx_brotli && git submodule update --init && cd ..
+wget https://ftp.pcre.org/pub/pcre/pcre-8.43.tar.gz && tar zxf pcre-8.43.tar.gz
+wget https://www.zlib.net/zlib-1.2.11.tar.gz && tar zxf zlib-1.2.11.tar.gz
+cd nginx-1.17.8
 ./configure --prefix=/usr/local/nginx --with-openssl=/root/workspace/maked/openssl-OpenSSL_1_1_1d --with-openssl-opt=enable-tls1_3 --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module --add-module=/root/workspace/maked/ngx_brotli --with-pcre=/root/workspace/maked/pcre-8.43 --with-zlib=/root/workspace/maked/zlib-1.2.11
 ```
 

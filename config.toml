@@ -1,6 +1,6 @@
 baseURL = "https://78997899.xyz"
 languageCode = "zh-CN"
-title = "MineSky04's Playground"
+title = "lwxntm's Playground"
 theme = "maupassant"
 googleAnalytics = ""  # UA-XXXXXXXX-X
 
@@ -15,10 +15,10 @@ summaryLength = 140
 disqusShortname = ""  ## 是否开启disqus评论，不要和utteranc同时开启
 
 [author]
-  name = "MineSky04"
+  name = "lwxntm"
 
 [params]
-  author = "MineSky04"
+  author = "lwxntm"
   subtitle = ""
   keywords = ""
   description = ""
@@ -37,15 +37,20 @@ disqusShortname = ""  ## 是否开启disqus评论，不要和utteranc同时开�
 
 ## 友情链接，可以多个
 
-# [[params.links]]
-#   title = "飞雪无情的博客"
-#   name = "飞雪无情的博客"
-#   url = "https://www.flysnow.org/"
+ [[params.links]]
+   title = "OneDrive列表"
+   name = "OneDrive列表"
+   url = "https://78997899.xyz/od/"
 
-# [[params.links]]
-#   title = "Android Gradle权威指南"
-#   name = "Android Gradle权威指南"
-#   url = "http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e"
+ [[params.links]]
+   title = "云筏NAT测试"
+   name = "云筏NAT测试"
+   url = "https://cr.78997899.xyz/"
+
+ [[params.links]]
+   title = "ServerStatus"
+   name = "ServerStatus"
+   url = "https://list.78997899.xyz/"
 
 ## 侧边栏广告位
 # [[params.ads]]
@@ -84,19 +89,13 @@ disqusShortname = ""  ## 是否开启disqus评论，不要和utteranc同时开�
 [menu]
 
   [[menu.main]]
-    identifier = "tools"
-    name = "工具"
-    url = "/tools/"
-    weight = 2
-
-  [[menu.main]]
     identifier = "archives"
     name = "归档"
     url = "/archives/"
-    weight = 3
+    weight = 2
 
   [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
-    weight = 4
+    weight = 3
