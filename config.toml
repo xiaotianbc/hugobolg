@@ -36,6 +36,10 @@ disqusShortname = ""  ## 是否开启disqus评论，不要和utteranc同时开�
   toc = true  # 是否开启目录
 
 ## 友情链接，可以多个
+ [[params.links]]
+   title = "Gin文件中转"
+   name = "Gin文件中转"
+   url = "http://qbc.78997899.xyz:2052/"
 
  [[params.links]]
    title = "OneDrive列表"
@@ -95,7 +99,13 @@ disqusShortname = ""  ## 是否开启disqus评论，不要和utteranc同时开�
     weight = 2
 
   [[menu.main]]
+    identifier = "flags"
+    name = "Flags"
+    url = "/flags/"
+    weight = 3
+
+  [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
-    weight = 3
+    weight = 4
