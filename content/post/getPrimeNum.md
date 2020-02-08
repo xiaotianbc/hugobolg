@@ -10,9 +10,12 @@ draft: false
 ## 约定
 
 计算第 `300000`个素数的值：答案是 `4256233`。尽量使用语言自带的时间计算函数统计计算消耗的时间：  
-测试计算机：  `Intel Core i7-8700 @  4.30 GHz` 编译型语言默认使用release版本。
+测试计算机：  `Intel Core i7-8700 @  4.30 GHz` .  
 
-由于最近比较熟悉Go，算法就使用Go来展示，下文所有程序都使用此算法：
+由于最近比较熟悉Go，算法就使用Go来展示，下文所有程序都使用此算法：  
+
+* 编译型语言使用`release`版本，由于数据类型对性能的影响还是比较大的，可以指定的都使用`uint32`。
+* 在`Swift`和`go`等语言中，代码第五行的`j > i/j`性能比`j * j > i`好20%（而且这俩语言不约而同的20%??），大部分语言都是后者更好，C语言甚至后者比前者快一倍，我会分别测试，选择最好的结果。
 
 ```go
 func nthPrime(n int) int {
@@ -47,6 +50,10 @@ go version go1.13.7 darwin/amd64
 答案是:4256233,耗时:2.815581095s
 ```
 
+## TL;DR
+
+![image](/images/prime.png)
+
 ## JavaScript
 
 ```js
@@ -54,7 +61,7 @@ function nthPrime(n) {
     let i = 3, j = 1;
     while (true) {
         j = j + 2;
-        if (j > i / j) {
+        if (j * j > i) {
             n--;
             if (n === 1) {
                 return i
@@ -81,7 +88,7 @@ console.log("第" + n + "个素数的值是:" + result + " 耗时" + time + "毫
 ❯ node -v
 v13.6.0
 ❯ node main.js
-第300000个素数的值是:4256233 耗时1050毫秒
+第300000个素数的值是:4256233 耗时850毫秒
 ```
 
 ## Python3
@@ -95,7 +102,7 @@ def nthPrime(n):
   true=1
   while (true==1):
     j=j+2
-    if (j>i/j):
+    if (j*j>i):
       n=n-1
       if (n==1):
         break
@@ -119,7 +126,7 @@ print("第" ,n, "个素数的值是:" , str(result) , " 耗时" , str(et - st) ,
 ❯ python3 -V
 Python 3.7.6
 ❯ python3 main.py
-第 300000 个素数的值是: 4256233  耗时 33160 毫秒
+第 300000 个素数的值是: 4256233  耗时 30349 毫秒
 ```
 
 ## Java
@@ -130,7 +137,7 @@ public class test {
         int i = 3, j = 1;
         while (true) {
             j = j + 2;
-            if (j > i / j) {
+            if (j * j > i) {
                 n = n - 1;
                 if (n == 1) {
                     break;
@@ -162,12 +169,10 @@ openjdk version "1.8.0_242"
 OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_242-b08)
 OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.242-b08, mixed mode)
 ❯ java test
-第300000个素数的值是:4256233 耗时1045毫秒
+第300000个素数的值是:4256233 耗时681毫秒
 ```
 
-## Go_Uint32
-
-由于Go在64位环境下默认int长度为64，其性能实在不符合作为编译语言的身份，所以强行把类型转换为uint32之后性能有所提高：  
+## Go
 
 ```go
 package main
@@ -202,25 +207,28 @@ func main() {
 	t2 := time.Since(t1)
 	fmt.Printf("答案是:%d,耗时:%s\n", result, t2)
 }
-//❯ go version
-//go version go1.13.7 darwin/amd64
-//❯ ./gouint32
-//答案是:4256233,耗时:619.018742ms
 ```
 
-## C/Cpp
+```shell
+❯ go version
+go version go1.13.7 darwin/amd64
+❯ ./gouint32
+答案是:4256233,耗时:619.018742ms
+```
 
-不懂c，使用clion，debug模式结果比release好。
+## C
 
-```c
-#include <iostream>
+不懂c，不加编译器优化结果更好。
+
+```cpp
 #include <sys/time.h>
-
-int NthPrime(int n) {
-    int i = 3, j = 1;
-    while (true) {
+#include <stdio.h>
+#include <sys/types.h> //Debian系统gcc需要，Mac下不用
+unsigned int NthPrime(unsigned int n) {
+    unsigned int i = 3, j = 1;
+    while (1) {
         j = j + 2;
-        if (j > i / j) {
+        if (j*j > i) {
             n = n - 1;
             if (n == 1) {
                 break;
@@ -237,17 +245,17 @@ int NthPrime(int n) {
 
 int64_t getCurrentTime() {
     struct timeval tv;
-    gettimeofday(&tv, NULL);
+    gettimeofday(&tv,NULL);
     return tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }
 
 int main() {
     int64_t s = getCurrentTime();
-    int n = 300000;
-    int result = NthPrime(n);
+    unsigned int n = 300000;
+    unsigned int result = NthPrime(n);
     int64_t e = getCurrentTime();
     int64_t time = e - s;
-    std::cout << "第" << n << "个素数的值是:" << result << " 耗时" << time << "毫秒" << std::endl;
+    printf("答案是%d，耗时%lld",result,time);
     return 0;
 }
 ```
@@ -255,21 +263,13 @@ int main() {
 ```shell
 ❯ gcc -03 main.c
 ❯ ./a.out
-答案是4256233，耗时1987
+答案是4256233，耗时1887
 ❯ gcc main.c
 ❯ ./a.out
-答案是4256233，耗时1097
-❯ clang -O main.c
-❯ ./a.out
-答案是4256233，耗时1967
-❯ clang main.c
-❯ ./a.out
-答案是4256233，耗时1099
+答案是4256233，耗时609
 ```
 
 ## Rust
-
-rust编译器使用的是nightly版本，使用Cargo build --release：  
 
 ```rust
 use chrono::prelude::*;
@@ -279,7 +279,7 @@ fn nth_prime(mut n: u32) -> u32 {
     let mut j = 1;
     loop {
         j = j + 2;
-        if j > i / j {
+        if j * j > i {
             n = n - 1;
             if n == 1 {
                 break;
@@ -309,7 +309,7 @@ fn main() {
 rustc 1.41.0 (5e1a79984 2020-01-27)
 ❯ Cargo build --release
 ❯ /target/release/getprime
-答案是:4256233,耗时:504ms
+答案是:4256233,耗时:492ms
 Cargo build --release
 ```
 
@@ -367,7 +367,7 @@ def nth_prime(n)
   j=1;
   while :true
     j=j+2;
-    if j>i/j
+    if j*j>i
       n=n-1;
       if n==1
         break;
@@ -392,7 +392,7 @@ puts "答案是#{res},耗时： #{time}ms"
 ❯ ruby -v
 ruby 2.6.5p114 (2019-10-01 revision 67812) [x86_64-darwin19]
 ❯ ruby hello.rb
-答案是4256233,耗时： 9241.105ms
+答案是4256233,耗时： 7782.211ms
 ```
 
 ## Swift
@@ -446,7 +446,7 @@ int nthPrime(int n) {
   var i = 3, j = 1;
   while (true) {
     j = j + 2;
-    if (j > i / j) {
+    if (j * j > i) {
       n--;
       if (n == 1) {
         return i;
@@ -475,7 +475,7 @@ Dart VM version: 2.7.1 (Thu Jan 23 13:02:26 2020 +0100) on "macos_x64"
 ❯ dart2native main.dart
 Generated: /Users/lei/workspace/helloprime/dart/main.exe
 ❯ ./main.exe
-答案是：4256233，耗时：1108 ms
+答案是：4256233，耗时：976 ms
 ```
 
 ## Lua
@@ -515,14 +515,50 @@ Lua 5.3.5  Copyright (C) 1994-2018 Lua.org, PUC-Rio
 答案是4256233， 耗时：10.081609s
 ```
 
-## elixir
+## crystal
 
-Todo...
+```ruby
+def nth_prime(n)
+  i=3;
+  j=1;
+  while :true
+    j=j+2;
+    if j*j>i
+      n=n-1;
+      if n==1
+        break;
+      end
+      i=i+2;
+      j=1;
+    elsif i%j==0
+      i=i+2;
+      j=1;
+    end
+  end
+  return i;
+end
+t1 = Time.local
+res = nth_prime(300000)
+t2 = Time.local
+time = (t2 - t1)
+puts "答案是#{res},耗时： #{time}s"
+```
 
-## Perl 
+```shell
+❯ crystal -v
+Crystal 0.32.1 (2019-12-18)
+LLVM: 9.0.0
+Default target: x86_64-apple-macosx
+❯ crystal build main.cr --release
+❯ ./main
+答案是4256233,耗时： 00:00:00.832870000s
+```
+
+
+## Perl
 
 ```perl
-#!/usr/bin/perl 
+#!/usr/bin/perl
 
 use Time::HiRes qw(time);
 
@@ -532,7 +568,7 @@ sub get_prime{
   $j=1;
   while (true){
     $j=$j+2;
-    if ($j>$i/$j){
+    if ($j * $j > $i){
       $n=$n-1;
       if ($n==1){
         last;
@@ -562,5 +598,10 @@ print "答案是： $res ，耗时： $td ms\n";
 This is perl 5, version 18, subversion 4 (v5.18.4) built for darwin-thread-multi-2level
 (with 2 registered patches, see perl -V for more detail)
 ❯ perl main.pl
-答案是： 4256233 ，耗时： 34.7363440990448 ms
+答案是： 4256233 ，耗时： 28.5426020622253 ms
 ```
+
+## Todo
+
+* HasKell
+* elixir/erlang
