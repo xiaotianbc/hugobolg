@@ -58,3 +58,10 @@ systemctl disable NetworkManager.service
  >如果是无线连接:
  
  进系统后直接输入`nmtui`即可进行配置。`Edit a connection=>WIFI.add=>SSID,Password,IPv4CONFIGURATION...etc`配置完成后选择一次`Activate a connection`即可完成连接，无需其他干预，另外请千万不要使用`armbian-config`程序内的任何网络相关选项，会导致难以排查的问题。  
+
+N1挂载优盘的方法：
+
+```shell
+#/etc/fstab
+/dev/sda1        /home/lwxntm/sda1   exfat       utf8,uid=1000,gid=1000,umask=0000      0 0
+```

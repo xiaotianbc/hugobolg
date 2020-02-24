@@ -3,7 +3,7 @@ title: Linux相关私货
 date: 2019-12-31 21:11:43
 tags:
 ---
-仅仅是为了方便记忆，一般都为debian10使用。  
+仅仅是为了方便记忆，一般都为 ~~ArchLinux~~ debian10使用。  
 
 ## 依赖
 
@@ -51,9 +51,13 @@ rm -rf ./besttrace*
 
 ``` shell
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 # .zshrc
-ZSH_THEME="powerlevel10k/powerlevel10k"
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure
+ZSH_THEME=""
 ```
 
 ## ssh心跳
@@ -68,6 +72,7 @@ echo "ServerAliveCountMax 60\n" >> /etc/ssh/ssh_config
 ```shell
 wget https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz
 tar -C /usr/local -xzf go*
+rm ./go1.13.7.linux-amd64.tar.gz
 #.zshrc
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
@@ -77,13 +82,24 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-export CARGO_HOME="/root/.cargo"
-export RUSTUP_HOME="/root/.rustup"
-export PATH=$PATH:/usr/local/go/bin:/root/go/bin:$CARGO_HOME/bin:$RUSTUP_HOME
+export CARGO_HOME="$HOME/.cargo"
+export RUSTUP_HOME="$HOME/.rustup"
+export PATH=$PATH:$CARGO_HOME/bin:$RUSTUP_HOME
 
 
 #export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 #export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+```
+
+## adoptJDK
+
+``` shell
+wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz
+tar -C /usr/local -zxf ./OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz
+rm ./OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz
+# .zshrc
+export JAVA_HOME=/usr/local/jdk8u242-b08
+export PATH=$PATH:$JAVA_HOME/bin
 ```
 
 ## Nodejs 13  
@@ -98,6 +114,16 @@ apt-get install -y nodejs
 ``` shell
 sudo rm -rf $(xcode-select -print-path)
 xcode-select --install
+```
+
+## Arch 踩坑
+
+```shell
+pacman -S archlinux-keyring
+vim /etc/locale.gen
+# 取消en_US.UTF8前面的注释
+locale-gen
+echo 'LANG=zh_CN.UTF-8'  > /etc/locale.conf
 ```
 
 ## 修改时区  
@@ -123,19 +149,20 @@ defaults write com.apple.finder ShowStatusBar -bool true
 sudo spctl --master-disable
 ```
 
-### IpV6 访问github?
+## Linux创建sudo权限用户
 
-```conf
-#hosts
-2a04:4e42::133 assets-cdn.github.com 2a04:4e42::133
-camo.githubusercontent.com 2a04:4e42::133 cloud.githubusercontent.com
-2a04:4e42::133 gist.githubusercontent.com 2a04:4e42::133
-avatars.githubusercontent.com 2a04:4e42::133
-avatars0.githubusercontent.com 2a04:4e42::133
-avatars1.githubusercontent.com 2a04:4e42::133
-avatars2.githubusercontent.com 2a04:4e42::133
-avatars3.githubusercontent.com 2a04:4e42::133
-marketplace-images.githubusercontent.com 2a04:4e42::133
-user-images.githubusercontent.com 2a04:4e42::133
-raw.githubusercontent.com
+```shell
+sudo adduser foo
+sudo usermod -a -G sudo foo
+#取消sudo权限
+sudo deluser foo sudo
+```
+
+## 修改为zh_CN.UTF-8
+
+```shell
+vim /etc/default/locale
+LANGUAGE=zh_CN.UTF-8
+LC_MESSAGES=zh_CN.UTF-8
+LANG=zh_CN.UTF-8
 ```

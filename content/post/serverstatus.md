@@ -86,15 +86,24 @@ After=syslog.target
 After=network.target
 
 [Service]
+[Unit]
+Description=ServerStatus Master Server
+After=syslog.target
+After=network.target
+
+[Service]
 Type=simple
 User=root
-ExecStart=/path/ServerStatus/server/sergate -c /path/ServerStatus/server/config.json -d /your_web_path/status
+ExecStart=/home/lwxntm/coolcodes/ServerStatus/clients/client.py
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
 ```
-客户端的保持运行方面只需要把ExecStart改成python可执行文件的路径即可。其他保持不变。
+
+```shell
+ExecStart=/path/ServerStatus/server/sergate -c /path/ServerStatus/server/config.json -d /your_web_path/status
+```
 
 ## 更换美化界面
 
