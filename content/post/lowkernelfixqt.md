@@ -2,6 +2,7 @@
 title: "低版本内核编译Qt时报错修复"
 date: 2020-02-02T16:23:51+08:00
 draft: false
+tags: ["linux"]
 ---
 
 ``` shell

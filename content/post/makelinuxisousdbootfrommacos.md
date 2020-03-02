@@ -2,6 +2,7 @@
 title: "MacOS 创建ubuntu启动盘最佳实践"
 date: 2020-01-21T22:23:51+08:00
 draft: false
+tags: ["linux","macos"]
 ---
 
 ## 前言

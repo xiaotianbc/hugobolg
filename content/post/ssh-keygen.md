@@ -1,7 +1,7 @@
 ---
 title: 使用ssh密钥登陆
 date: 2019-12-03 22:50:10
-tags:
+tags: ["linux"]
 ---
 在命令行中输入:  
  `ssh-keygen -t rsa -C "your_email@example.com"`    

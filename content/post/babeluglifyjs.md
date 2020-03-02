@@ -2,6 +2,7 @@
 title: "用uglify-js压缩js代码"
 date: 2020-01-11T20:23:51+08:00
 draft: false
+tags: ["javascript"]
 ---
 
 >>正常情况下请不要给别人看他们不懂的代码，仅仅用于运行时，给机器看即可。

@@ -1,7 +1,7 @@
 ---
 title: javaScript学习计划
 date: 2019-12-02 22:26:32
-tags:
+tags: ["javascript"]
 ---
 1. ~~Head First JavaScript程序设计~~
 2. JavaScript高级程序设计（第3版）

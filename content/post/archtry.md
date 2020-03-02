@@ -2,6 +2,7 @@
 title: "Archlinux-从全新安装到能发这个文章"
 date: 2020-02-29T22:44:51+08:00
 draft: false
+tags: ["linux"]
 ---
 
 ## 前言
@@ -192,10 +193,10 @@ sudo pacman -S mesa
 sudo pacman -S Xorg
 ```
 
-然后直接安装 kde，kde 的终端，fcitx 输入法：
+然后直接安装 kde，kde 的应用，fcitx 输入法：
 
 ```
-sudo pacman -S plasma-meta konsole fcitx-im
+sudo pacman -S plasma-meta kde-applications-meta fcitx-im
 ```
 
 装完了，就让他启动吧！对了，你用的应该是 zsh 吧？？`vim .zprofile`
@@ -228,3 +229,17 @@ sudo pacman -S ttf-sarasa-gothic noto-fonts-cjk
 ```
 
 配置输入法之类就不细谈了。问题不大.
+
+## 安装SDDM
+
+```shell
+sudo pacman -S sddm sddm-kcm
+```
+
+`vim /etc/sddm.conf.d/autologin.conf`
+
+```conf
+[Autologin]
+User=lwxntm
+Session=plasma.desktop
+```

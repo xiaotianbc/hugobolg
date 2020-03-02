@@ -2,6 +2,7 @@
 title: "用golang排序比较单核性能"
 date: 2020-01-23T22:23:51+08:00
 draft: false
+tags: ["go"]
 ---
 采用的golang代码如下，就是最简单的冒泡排序：
 

@@ -1,7 +1,7 @@
 ---
 title: 使用斐讯N1搭建Openwrt旁路网关
 date: 2019-12-29 21:26:32
-tags:
+tags: ["linux"]
 ---
 
 ## 前言

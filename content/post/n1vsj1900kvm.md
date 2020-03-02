@@ -2,6 +2,7 @@
 title: "使用unixbench测试N1的性能"
 date: 2020-01-11T18:23:51+08:00
 draft: false
+tags: ["linux"]
 ---
 
 由于n1是arm64架构，无法使用geekbench等程序进行测试，而sysbench等程序测出来等结果复杂度并无法让我满意，所以使用unixbench进行了测试。  

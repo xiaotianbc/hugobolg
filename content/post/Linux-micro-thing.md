@@ -1,7 +1,7 @@
 ---
 title: Linux相关私货
 date: 2019-12-31 21:11:43
-tags:
+tags: ["linux"]
 ---
 仅仅是为了方便记忆，一般都为 ~~ArchLinux~~ debian10使用。  
 

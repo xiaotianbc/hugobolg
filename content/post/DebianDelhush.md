@@ -1,7 +1,7 @@
 ---
 title: Debian删除登陆消息
 date: 2019-12-06 20:50:03
-tags:
+tags: ["linux"]
 ---
 Debian 删除登陆消息很简单，参考 <https://wiki.debian.org/motd>  
 `touch ~/.hushlogin`

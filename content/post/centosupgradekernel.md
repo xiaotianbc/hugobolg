@@ -2,6 +2,7 @@
 title: "CentOS升级内核版本"
 date: 2020-01-29T19:23:51+08:00
 draft: false
+tags: ["linux"]
 ---
 
 迫于某些原因开始使用Centos，记录一下升级centos内核的办法：  

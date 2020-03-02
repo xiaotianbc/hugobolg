@@ -2,6 +2,7 @@
 title: "Hello, Prme!"
 date: 2020-02-06T15:23:51+08:00
 draft: false
+tags: ["fun"]
 ---
 
 自从1978年的`The C Programming Language`开始，了解门程序语言都是从Hello world开始。  
@@ -272,7 +273,7 @@ int main() {
 ## Rust
 
 ```rust
-use chrono::prelude::*;
+use std::time::Instant;
 
 fn nth_prime(mut n: u32) -> u32 {
     let mut i = 3;
@@ -295,13 +296,12 @@ fn nth_prime(mut n: u32) -> u32 {
 }
 
 fn main() {
-    let n = 300000;
-    let st: DateTime<Local> = Local::now();
-    let result = nth_prime(n);
-    let et: DateTime<Local> = Local::now();
-    let du = (et - st).num_milliseconds();
+    let now = Instant::now();
+    let result = nth_prime(300000);
+    let du = now.elapsed().as_millis();
     println!("答案是:{},耗时:{}ms", result, du);
 }
+
 ```
 
 ```shell

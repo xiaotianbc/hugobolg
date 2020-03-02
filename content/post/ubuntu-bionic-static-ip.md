@@ -1,7 +1,7 @@
 ---
 title: 给ubuntu Bionic设置静态IP
 date: 2019-12-22 23:24:36
-tags:
+tags: ["linux"]
 ---
 
 vim /etc/netplan/01-netcfg.yaml

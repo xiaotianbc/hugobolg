@@ -2,6 +2,7 @@
 title: "golang调用高德api查询天气"
 date: 2020-01-31T21:57:51+08:00
 draft: false
+tags: ["go"]
 ---
 
 学习了golang的json之后，完全仿照这一章的程序结构，我尝试写了个调用高德api查询天气的程序，代码如下：

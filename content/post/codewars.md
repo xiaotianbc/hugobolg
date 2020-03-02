@@ -2,7 +2,7 @@
 title: "在Codewars--代码战争中锻炼你的熟练度"
 date: 2020-01-28T14:57:51+08:00
 draft: false
-tags: ["kata"]
+tags: ["kata","go"]
 ---
 
 近日在家学习golang，发现了这么一个网站：[codewars](https://www.codewars.com/r/cbyrzw)，里面的题目大多数都是比较侧重实用的，刷了一会儿感觉挺有趣的，同时对于初学者来说收获也是有的：  

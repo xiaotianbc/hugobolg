@@ -2,6 +2,7 @@
 title: "CloudRaft-Ipv6大盘鸡配置"
 date: 2020-01-26T16:57:51+08:00
 draft: false
+tags: ["linux"]
 ---
 
 ## 前言

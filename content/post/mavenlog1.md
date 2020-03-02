@@ -5,20 +5,36 @@ draft: false
 tags: ["java"]
 ---
 
+mavne配置：
+```xml
+ <mirrors>
+     <mirror>
+            <id>nexus-aliyun</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </mirror>
+  </mirrors>
+   <profiles>
+    <profile>   
+    <id>jdk1.8</id>    
+    <activation>   
+        <activeByDefault>true</activeByDefault>    
+        <jdk>1.8</jdk>   
+    </activation>    
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>    
+        <maven.compiler.target>1.8</maven.compiler.target>    
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>   
+    </properties>   
+</profile> 
+  </profiles>
+```
+
+项目配置：
 ```xml
 <build>
     <plugins>
-        <!-- 指定jdk -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
-                <encoding>UTF-8</encoding>
-            </configuration>
-        </plugin>
-
         <!-- 使用 mvn assembly:assembly 打包 -->
         <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>

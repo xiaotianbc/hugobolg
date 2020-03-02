@@ -1,7 +1,7 @@
 ---
 title: react-tutorial-homework
 date: 2019-12-25 23:31:19
-tags:
+tags: ["javascript"]
 ---
 开始学习react，我发现我绝对是喜欢边做边学而不是一步步学习概念的人，看红宝书几分钟就晕了。react官网的教程看几个小时还津津有味的。
 <!-- more -->

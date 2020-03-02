@@ -1,7 +1,7 @@
 ---
 title: Eloquent JavaScript笔记：迭代器
 date: 2020-01-05 16:23:34
-tags:
+tags: ["javascript"]
 ---
 
 ## 迭代器是做什么的
