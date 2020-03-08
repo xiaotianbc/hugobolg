@@ -11,45 +11,11 @@ tags: ["fun"]
 ## 约定
 
 计算第 `300000`个素数的值：答案是 `4256233`。尽量使用语言自带的时间计算函数统计计算消耗的时间：  
-测试计算机：  `Intel Core i7-8700 @  4.30 GHz` .  
+测试计算机：  `Intel Core i7-8700 @  4.30 GHz`  .  
 
-由于最近比较熟悉Go，算法就使用Go来展示，下文所有程序都使用此算法：  
-
+* 此算法仅仅测试在栈上的性能，没有使用堆（数组），最后有附在堆上用空间换时间的效果。
 * 编译型语言使用`release`版本，由于数据类型对性能的影响还是比较大的，可以指定的都使用`uint32`。
 * 在`Swift`和`go`等语言中，代码第五行的`j > i/j`性能比`j * j > i`好20%（而且这俩语言不约而同的20%??），大部分语言都是后者更好，C语言甚至后者比前者快一倍，我会分别测试，选择最好的结果。
-
-```go
-func nthPrime(n int) int {
-	i, j := 3, 1
-	for {
-		j = j + 2
-		if j > i/j {
-			n--
-			if n == 1 {
-				return i
-			}
-			i, j = i+2, 1
-		} else if i%j == 0 {
-			i, j = i+2, 1
-		}
-	}
-}
-
-func main() {
-	t1 := time.Now()
-	n := 300000
-	result := nthPrime(n)
-	t2 := time.Since(t1)
-	fmt.Printf("答案是:%d,耗时:%s\n", result, t2)
-}
-```
-
-```shell
-❯ go version
-go version go1.13.7 darwin/amd64
-❯ ./go
-答案是:4256233,耗时:2.815581095s
-```
 
 ## TL;DR
 
@@ -601,7 +567,48 @@ This is perl 5, version 18, subversion 4 (v5.18.4) built for darwin-thread-multi
 答案是： 4256233 ，耗时： 28.5426020622253 ms
 ```
 
-## Todo
+## 彩蛋
 
-* HasKell
-* elixir/erlang
+```rust
+use std::time::Instant;
+
+fn prime_stack(n: u32) -> u32 {
+    let (mut i, mut j, mut k) = (3, 0, 1);
+    let mut primes: Vec<u32> = Vec::new();
+    primes.push(2);
+    loop {
+        let f = primes[j];
+        if f * f > i {
+            if k == n - 1 {
+                return i;
+            }
+            primes.push(i);
+            i += 2;
+            j = 1;
+            k += 1;
+        } else if i / f * f != i {
+            j += 1;
+        } else {
+            i += 2;
+            j = 1;
+        }
+    }
+}
+
+fn main() {
+    let mut timelist = 0;
+    for _ in 0..10 {
+        let now = Instant::now();
+        let result = prime_stack(300000);
+        timelist += now.elapsed().as_micros();
+        print!("{}\t", result);
+    }
+    println!("平均耗时:{}ms", timelist / 10_000);
+}
+
+```
+
+```
+❯ target/release/untitled
+平均耗时:199ms
+```

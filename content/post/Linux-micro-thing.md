@@ -51,31 +51,26 @@ rm -rf ./besttrace*
 
 ``` shell
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-mkdir -p "$HOME/.zsh"
-git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-# .zshrc
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
-ZSH_THEME=""
+#linux
+curl -fsSL https://starship.rs/install.sh | bash
+#mac
+brew install starship
+# ~/.zshrc
+eval "$(starship init zsh)"
 ```
 
+## LinuxBrew
+
+```shell
+sudo apt-get install build-essential gcc
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.zshrc
+```
 ## ssh心跳
 
 ``` shell
 echo "ServerAliveInterval 30\n" >> /etc/ssh/ssh_config
 echo "ServerAliveCountMax 60\n" >> /etc/ssh/ssh_config
-```
-
-## Go
-
-```shell
-wget https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz
-tar -C /usr/local -xzf go*
-rm ./go1.13.7.linux-amd64.tar.gz
-#.zshrc
-export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 ```
 
 ## Rust
