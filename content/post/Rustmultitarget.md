@@ -1,5 +1,5 @@
 ---
-title: "Rust跨平台编译"
+title: "Rust为arm交叉编译"
 date: 2020-03-03T11:23:51+08:00
 draft: false
 tags: ["rust"]

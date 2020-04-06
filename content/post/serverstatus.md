@@ -94,6 +94,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
+#WorkingDirectory=/home/...
 ExecStart=/home/lwxntm/coolcodes/ServerStatus/clients/client.py
 ExecReload=/bin/kill -HUP $MAINPID
 

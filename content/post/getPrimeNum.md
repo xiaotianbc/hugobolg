@@ -573,7 +573,7 @@ This is perl 5, version 18, subversion 4 (v5.18.4) built for darwin-thread-multi
 use std::time::Instant;
 
 fn prime_stack(n: u32) -> u32 {
-    let (mut i, mut j, mut k) = (3, 0, 1);
+    letmut(i, j, k) = (3, 0, 1);
     let mut primes: Vec<u32> = Vec::new();
     primes.push(2);
     loop {

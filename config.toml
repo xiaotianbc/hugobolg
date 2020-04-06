@@ -37,19 +37,19 @@ disqusShortname = ""  ## 是否开启disqus评论，不要和utteranc同时开�
 
 ## 友情链接，可以多个
  [[params.links]]
-   title = "Gin文件中转"
-   name = "Gin文件中转"
+   title = "阿里上的Gin-sfs"
+   name = "阿里上的Gin-sfs"
+   url = "http://78997899.xyz:49999/"
+
+ [[params.links]]
+   title = "Nat的rust文件服务器"
+   name = "Nat的rust文件服务器"
    url = "http://qbc.78997899.xyz:2052/"
 
  [[params.links]]
    title = "OneDrive列表"
    name = "OneDrive列表"
    url = "https://78997899.xyz/od/"
-
- [[params.links]]
-   title = "云筏NAT测试"
-   name = "云筏NAT测试"
-   url = "https://cr.78997899.xyz/"
 
  [[params.links]]
    title = "ServerStatus"
