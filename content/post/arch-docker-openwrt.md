@@ -29,6 +29,7 @@ sudo systemctl restart docker.service
 ```
 yay -S base-devel antlr3 gperf
 git clone https://github.com/coolsnowwolf/lede
+# remove '#' of feeds.conf.default
 #可选 git clone -b dev-19.07 https://github.com/Lienol/openwrt
 cd lede
 ./scripts/feeds update -a 
