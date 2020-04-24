@@ -3,6 +3,10 @@ USER=root
 HOST=78997899.xyz
 DIR=/home/wwwroot/3DCEList/   # the directory where your web site files should go
 
+git add -A
+git commit -m "auto update"
+git push
+
 hugo && rsync -avz --delete public/ ${USER}@${HOST}:${DIR}
 
 exit 0
