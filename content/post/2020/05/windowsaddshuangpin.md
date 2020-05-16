@@ -13,3 +13,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS]
 "UserDefinedDoublePinyinScheme1"="小鹤双拼*2*^*iuvdjhcwfg^xmlnpbksqszxkrltvyovt"
 ```
+
+来源：  
+* [Win10 微软拼音添加小鹤双拼以及其他配置](https://ifttl.com/add-flypy-to-win10-microsoft-pinyin-and-other-configuration)
