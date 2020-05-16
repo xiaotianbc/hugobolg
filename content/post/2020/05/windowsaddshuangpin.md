@@ -5,7 +5,7 @@ draft: false
 tags: ["双拼"]
 ---
 
-直接添加注册表：
+直接添加注册表：  
 
 ```
 Windows Registry Editor Version 5.00
