@@ -13,7 +13,7 @@ tags: ["switch"]
 
 - 准备一张TF卡，格式化成exFAT格式，直接插入switch，确认可以正常识别，长按电源键把switch关机。
 
-- 使用读卡器加载TF卡，下载最新的大气层系统文件(别忘了下载`fusee-primary.bin`)：https://github.com/Atmosphere-NX/Atmosphere/releases， hekate（bootloader）https://github.com/CTCaer/hekate/releases/tag/v5.5.4-v2 ，还有sigpatches文件（用于运行非官方发行的nsp文件，缺失运行部分游戏会报错）：https://github.com/eXhumer/patches/releases，还有dbi（mtp工具）：https://github.com/rashevskyv/dbi/releases， lockpick (用于备份key文件，可选)：https://github.com/shchmue/Lockpick_RCM/releases。
+- 使用读卡器加载TF卡，下载最新的大气层系统文件(别忘了下载`fusee-primary.bin`)：[https://github.com/Atmosphere-NX/Atmosphere/releases](https://github.com/Atmosphere-NX/Atmosphere/releases)， hekate（bootloader）[https://github.com/CTCaer/hekate/releases/tag/v5.5.4-v2](https://github.com/CTCaer/hekate/releases/tag/v5.5.4-v2) ，还有sigpatches文件（用于运行非官方发行的nsp文件，缺失运行部分游戏会报错）：[https://github.com/eXhumer/patches/releases](https://github.com/eXhumer/patches/releases)，还有dbi（mtp工具）：[https://github.com/rashevskyv/dbi/releases](https://github.com/rashevskyv/dbi/releases)， lockpick (用于备份key文件，可选)：[https://github.com/shchmue/Lockpick_RCM/releases](https://github.com/shchmue/Lockpick_RCM/releases)。
 
 - 把大气层系统与sigpatches和hekate里的bootloader文件夹复制到tf卡。
 
@@ -55,3 +55,9 @@ tags: ["switch"]
 
   [https://github.com/joel16/NX-Shell](https://github.com/joel16/NX-Shell)
 
+
+
+switch常用资源下载网站，推荐megaup, or uptobox or 1fichier：
+
+- [NXbrew](https://nxbrew.com/)
+- [xciroms](https://xciroms.org/)
