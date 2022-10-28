@@ -1,6 +1,6 @@
-baseURL = "https://sj.78997899.xyz"
+baseURL = "https://xiaotianbc.github.io"
 languageCode = "zh-CN"
-title = "lwxntm's Playground"
+title = "啸天编程-啸天的编程记录"
 theme = "maupassant"
 googleAnalytics = ""  # UA-XXXXXXXX-X
 
@@ -36,21 +36,6 @@ disqusShortname = ""  ## 是否开启disqus评论，不要和utteranc同时开�
   toc = true  # 是否开启目录
 
 ## 友情链接，可以多个
- [[params.links]]
-   title = "阿里上的Gin-sfs"
-   name = "阿里上的Gin-sfs"
-   url = "http://78997899.xyz:49999/"
-
- [[params.links]]
-   title = "Nat的rust文件服务器"
-   name = "Nat的rust文件服务器"
-   url = "http://qbc.78997899.xyz:2052/"
-
- [[params.links]]
-   title = "OneDrive列表"
-   name = "OneDrive列表"
-   url = "https://78997899.xyz/od/"
-
  [[params.links]]
    title = "ServerStatus"
    name = "ServerStatus"

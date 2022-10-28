@@ -1,9 +1,9 @@
 ---
-title: Linux相关私货
+title: Linux相关命令记录
 date: 2019-12-31 21:11:43
 tags: ["linux"]
 ---
-仅仅是为了方便记忆，一般都为 ~~ArchLinux~~ debian10使用。  
+仅仅是为了方便记忆，一般都为 ~~ArchLinux~~ debian10使用。
 
 ## 依赖
 
@@ -97,14 +97,14 @@ export JAVA_HOME=/usr/local/jdk8u242-b08
 export PATH=$PATH:$JAVA_HOME/bin
 ```
 
-## Nodejs 13  
+## Nodejs 13
 
 ``` shell
 curl -sL https://deb.nodesource.com/setup_13.x | bash -
 apt-get install -y nodejs
 ```
 
-## node-gyp出现错误  
+## node-gyp出现错误
 
 ``` shell
 sudo rm -rf $(xcode-select -print-path)
@@ -121,7 +121,7 @@ locale-gen
 echo 'LANG=zh_CN.UTF-8'  > /etc/locale.conf
 ```
 
-## 修改时区  
+## 修改时区
 
 ``` shell
 timedatectl set-timezone Asia/Shanghai
